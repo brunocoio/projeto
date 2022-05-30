@@ -6,9 +6,10 @@ class DefaultModel
    * variable declaration
    * declaração de variáveis
    */
-  private $name;
-  private $email;
-  private $password;
+  public $id;
+  public $name;
+  public $email;
+  public $password;
 
   /**
    * set
@@ -16,6 +17,10 @@ class DefaultModel
   public function set($string)
   {
     # code...
+  }
+  public function setId($string)
+  {
+    $this->name = $string;
   }
   public function setName($string)
   {
@@ -37,6 +42,10 @@ class DefaultModel
   {
     # code...
   }
+  public function getId()
+  {
+    return $this->id;
+  }
   public function getName()
   {
     return $this->name;
@@ -48,5 +57,51 @@ class DefaultModel
   public function getPassword()
   {
     return $this->password;
+  }
+
+  /**
+   * CRUD functions
+   */
+
+  /**
+   * create
+   */
+  public function create()
+  {
+    # code...
+  }
+
+  /**
+   * read all
+   */
+  public function readAll($table, $where = null, $order = null, $limit = null, $type = null)
+  {
+    $query = (new Connect($table))->select($where, $order, $limit)
+      ->fetchAll(PDO::FETCH_CLASS, self::class);
+    return $query;
+  }
+
+  /**
+   * read id
+   */
+  public function readId()
+  {
+    # code...
+  }
+
+  /**
+   * update
+   */
+  public function update()
+  {
+    # code...
+  }
+
+  /**
+   * delete
+   */
+  public function delete()
+  {
+    # code...
   }
 }

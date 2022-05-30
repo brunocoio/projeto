@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . '\controller\DefaultController.php');
+//include(__DIR__ . '\controller\DefaultController.php');
 include(__DIR__ . '\model\DefaultModel.php');
 include(__DIR__ . '\db\database.php');
 ?>
