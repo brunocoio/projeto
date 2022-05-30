@@ -18,24 +18,20 @@ print "
               </tr>
             </thead>
             ";
-print "<tr>";
+$read = DefaultModel::readAll('tb_user', '', '', '', '');
+foreach ($read as $val) {
+  print "<tr>";
+  print "<td>id</td><td>{$val->name}</td><td>{$val->email}</td><td>{$val->password}</td>";
+  print "<td><a href='form.php?id={$val->id}' target='self' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>";
+  print "<a href='' target='self' class='btn btn-outline-danger mx-2'><i class='fas fa-trash'></i></a></td>";
+  print "</tr>";
+}
 
-print "<td>id</td><td>name</td><td>email</td><td>password</td>";
-print "<td><a href='form.php?id=id' target='self' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>";
-print "<a href='' target='self' class='btn btn-outline-danger mx-2'><i class='fas fa-trash'></i></a></td>";
 
-print "</tr>";
 print "</table>";
 print "
   </div>
 </div>
 ";
-
-$read = DefaultModel::readAll('tb_user', '', '', '', '');
-foreach ($read as $val) {
-  print $val->id;
-  print $val->name;
-  print $val->email;
-}
 
 require('footer.php');
