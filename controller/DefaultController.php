@@ -1,38 +1,66 @@
 <?php
 
-require_once __DIR__ . '\model\DefaultModel.php';
-
-class DefaultController
+class DefaultController extends Controller
 {
   /**
-   * create
+   * list regs
    */
-  public function create()
+  public function listar()
   {
-    # code...
+    $regs = DefaultModel::all();
+    return $this->view('home', ['regs' => $regs]);
   }
-
   /**
-   * read
+   * show regs to create
    */
-  public function readAll()
+  public function criar()
   {
-    # code...
+    return $this->view('form');
   }
-
   /**
-   * update
+   * show regs to edit
    */
-  public function update()
+  public function editar($dados)
   {
-    # code...
+    $id = (int) $dados['id'];
+    $reg = DefaultModel::find($id);
+
+    return $this->view('form', ['reg' => $reg]);
   }
-
   /**
-   * delete
+   * save
    */
-  public function delete()
+  public function salvar()
   {
-    # code...
+    $reg = new DefaultModel;
+    $reg->name = $this->request->name;
+    $reg->email = $this->request->email;
+    $reg->password = $this->request->password;
+    if ($reg->save()) {
+      return $this->listar();
+    }
+  }
+  /**
+   * update regs to edit
+   */
+  public function atualizar($dados)
+  {
+    $id = (int) $dados['id'];
+    $reg = DefaultModel::find($id);
+    $reg->name = $this->request->name;
+    $reg->email = $this->request->email;
+    $reg->password = $this->request->password;
+    $reg->save();
+
+    return $this->listar();
+  }
+  /**
+   * delete regs by id
+   */
+  public function excluir($dados)
+  {
+    $id = (int) $dados['id'];
+    $reg = DefaultModel::destroy($id);
+    return $this->listar();
   }
 }

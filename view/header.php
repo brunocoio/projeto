@@ -1,7 +1,11 @@
 <?php
-//include(__DIR__ . '\controller\DefaultController.php');
-include(__DIR__ . '\model\DefaultModel.php');
-include(__DIR__ . '\db\database.php');
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+require_once __DIR__ . '../../db/Request.php';
+require_once __DIR__ . '../../db/Conexao.php';
+require_once __DIR__ . '../../controller/Controller.php';
+require_once __DIR__ . '../../controller/DefaultController.php';
+require_once __DIR__ . '../../model/DefaultModel.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -30,7 +34,7 @@ include(__DIR__ . '\db\database.php');
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="read.php">Listar</a>
+          <a class="nav-link" href="?controller=DefaultController&method=listar">Listar</a>
         </li>
       </ul>
     </div>
@@ -38,3 +42,4 @@ include(__DIR__ . '\db\database.php');
 </nav>
 
 <body>
+  <!-- Optional JavaScript; choose one of the two! -->
