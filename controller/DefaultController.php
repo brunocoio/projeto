@@ -5,24 +5,24 @@ class DefaultController extends Controller
   /**
    * list regs
    */
-  public function listar()
+  public function readCon()
   {
-    $regs = DefaultModel::all();
+    $regs = DefaultModel::allMod();
     return $this->view('home', ['regs' => $regs]);
   }
   /**
    * show regs to create
    */
-  public function criar()
+  public function createCon()
   {
     return $this->view('form');
   }
   /**
    * show regs to edit
    */
-  public function editar($dados)
+  public function editCon($value)
   {
-    $id = (int) $dados['id'];
+    $id = (int) $value['id'];
     $reg = DefaultModel::find($id);
 
     return $this->view('form', ['reg' => $reg]);
@@ -30,37 +30,37 @@ class DefaultController extends Controller
   /**
    * save
    */
-  public function salvar()
+  public function updateCon()
   {
     $reg = new DefaultModel;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    if ($reg->save()) {
-      return $this->listar();
+    if ($reg->saveMod()) {
+      return $this->readCon();
     }
   }
   /**
    * update regs to edit
    */
-  public function atualizar($dados)
+  public function refreshCon($value)
   {
-    $id = (int) $dados['id'];
+    $id = (int) $value['id'];
     $reg = DefaultModel::find($id);
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    $reg->save();
+    $reg->saveMod();
 
-    return $this->listar();
+    return $this->readCon();
   }
   /**
    * delete regs by id
    */
-  public function excluir($dados)
+  public function deleteCon($value)
   {
-    $id = (int) $dados['id'];
+    $id = (int) $value['id'];
     $reg = DefaultModel::destroy($id);
-    return $this->listar();
+    return $this->readCon();
   }
 }

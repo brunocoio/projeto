@@ -9,7 +9,7 @@ class Controller
     $this->request = new Request;
   }
 
-  public function view($arquivo, $array = null)
+  public function view($file, $array = null)
   {
     if (!is_null($array)) {
       foreach ($array as $var => $value) {
@@ -17,7 +17,7 @@ class Controller
       }
     }
     ob_start();
-    include "{$arquivo}.php";
+    include "{$file}.php";
     ob_flush();
   }
 }
