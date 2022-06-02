@@ -28,7 +28,7 @@ class DefaultController extends Controller
     return $this->view('form', ['reg' => $reg]);
   }
   /**
-   * save
+   * insert
    */
   public function updateCon()
   {
@@ -36,7 +36,7 @@ class DefaultController extends Controller
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    if ($reg->saveMod()) {
+    if ($reg->createMod()) {
       return $this->readCon();
     }
   }

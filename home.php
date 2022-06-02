@@ -16,13 +16,13 @@
           foreach ($regs as $reg) {
         ?>
             <tr>
-              <td><?php echo $reg->id; ?></td>
-              <td><?php echo $reg->name; ?></td>
-              <td><?php echo $reg->password; ?></td>
-              <td><?php echo $reg->email; ?></td>
+              <td><?= $reg->id; ?></td>
+              <td><?= $reg->name; ?></td>
+              <td><?= $reg->password; ?></td>
+              <td><?= $reg->email; ?></td>
               <td>
-                <a href='?controller=DefaultController&method=editCon&id=<?php echo $reg->id; ?>' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>
-                <a href='?controller=DefaultController&method=deleteCon&id=<?php echo $reg->id; ?>' class='btn btn-outline-danger mx-2'><i class='fas fa-trash'></i></a>
+                <a href='?controller=DefaultController&method=editCon&id=<?= $reg->id; ?>' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>
+                <a href='?controller=DefaultController&method=deleteCon&id=<?= $reg->id; ?>' class='btn btn-outline-danger mx-2'><i class='fas fa-trash'></i></a>
               </td>
             </tr>
           <?php

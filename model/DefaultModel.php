@@ -31,9 +31,9 @@ class DefaultModel
     return isset($this->attributes[$attribute]);
   }
   /**
-   * save reg
+   * insert reg
    */
-  public function saveMod()
+  public function createMod()
   {
     $columns = $this->validateMod($this->attributes);
     if (!isset($this->id)) {
@@ -41,7 +41,22 @@ class DefaultModel
         implode(', ', array_keys($columns)) .
         ") VALUES (" .
         implode(', ', array_values($columns)) . ");";
-    } else {
+    }
+    if ($connect = Connect::getInstance()) {
+      $stmt = $connect->prepare($query);
+      if ($stmt->execute()) {
+        return $stmt->rowCount();
+      }
+    }
+    return false;
+  }
+  /**
+   * save reg
+   */
+  public function saveMod()
+  {
+    $columns = $this->validateMod($this->attributes);
+    if (isset($this->id)) {
       foreach ($columns as $key => $value) {
         if ($key !== 'id') {
           $definir[] = "{$key}={$value}";
