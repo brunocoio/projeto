@@ -5,22 +5,22 @@ class DefaultController extends Controller
   /**
    * list regs
    */
-  public function readCon()
+  public function read()
   {
-    $regs = DefaultModel::allMod();
+    $regs = DefaultModel::all();
     return $this->view('home', ['regs' => $regs]);
   }
   /**
    * show regs to create
    */
-  public function createCon()
+  public function create()
   {
     return $this->view('form');
   }
   /**
    * show regs to edit
    */
-  public function editCon($value)
+  public function edit($value)
   {
     $id = (int) $value['id'];
     $reg = DefaultModel::find($id);
@@ -30,37 +30,37 @@ class DefaultController extends Controller
   /**
    * insert
    */
-  public function updateCon()
+  public function update()
   {
     $reg = new DefaultModel;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    if ($reg->createMod()) {
-      return $this->readCon();
+    if ($reg->create()) {
+      return $this->read();
     }
   }
   /**
    * update regs to edit
    */
-  public function refreshCon($value)
+  public function refresh($value)
   {
     $id = (int) $value['id'];
     $reg = DefaultModel::find($id);
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    $reg->saveMod();
+    $reg->save();
 
-    return $this->readCon();
+    return $this->read();
   }
   /**
    * delete regs by id
    */
-  public function deleteCon($value)
+  public function delete($value)
   {
     $id = (int) $value['id'];
     $reg = DefaultModel::destroy($id);
-    return $this->readCon();
+    return $this->read();
   }
 }

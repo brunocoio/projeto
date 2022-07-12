@@ -33,9 +33,9 @@ class DefaultModel
   /**
    * insert reg
    */
-  public function createMod()
+  public function create()
   {
-    $columns = $this->validateMod($this->attributes);
+    $columns = $this->validate($this->attributes);
     if (!isset($this->id)) {
       $query = "INSERT INTO tb_user (" .
         implode(', ', array_keys($columns)) .
@@ -53,9 +53,9 @@ class DefaultModel
   /**
    * save reg
    */
-  public function saveMod()
+  public function save()
   {
-    $columns = $this->validateMod($this->attributes);
+    $columns = $this->validate($this->attributes);
     if (isset($this->id)) {
       foreach ($columns as $key => $value) {
         if ($key !== 'id') {
@@ -75,7 +75,7 @@ class DefaultModel
   /**
    * val regs sintax
    */
-  private function escapeMod($value)
+  private function escape($value)
   {
     if (is_string($value) & !empty($value)) {
       return "'" . addslashes($value) . "'";
@@ -90,12 +90,12 @@ class DefaultModel
   /**
    * validate regs
    */
-  private function validateMod($value)
+  private function validate($value)
   {
     $result = array();
     foreach ($value as $k => $v) {
       if (is_scalar($v)) {
-        $result[$k] = $this->escapeMod($v);
+        $result[$k] = $this->escape($v);
       }
     }
     return $result;
@@ -103,7 +103,7 @@ class DefaultModel
   /**
    * list
    */
-  public static function allMod()
+  public static function all()
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM tb_user;");

@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="?controller=DefaultController&<?= isset($reg->id) ? "method=refreshCon&id={$reg->id}" : "method=updateCon"; ?>" method="post">
+  <form action="?controller=DefaultController&<?= isset($reg->id) ? "method=refresh&id={$reg->id}" : "method=update"; ?>" method="post">
     <div class="form-group">
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="name">Nome:</label>
@@ -16,7 +16,7 @@
       <div class="form-group my-2">
         <input type="hidden" name="id" id="id" value="<?= isset($reg->id) ? $reg->id : null; ?>" />
         <button class="btn btn-outline-success mx-2" type="submit"><i class='fas fa-check'></i></button>
-        <a class="btn btn-outline-danger mx-2" href="?controller=DefaultController&method=readCon"><i class='fas fa-times'></i></a>
+        <a class="btn btn-outline-danger mx-2" href="?controller=DefaultController&method=read"><i class='fas fa-times'></i></a>
       </div>
     </div>
   </form>

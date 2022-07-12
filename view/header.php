@@ -34,7 +34,7 @@ require_once __DIR__ . '../../model/DefaultModel.php';
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?controller=DefaultController&method=readCon">Listar</a>
+          <a class="nav-link" href="?controller=DefaultController&method=read">Listar</a>
         </li>
       </ul>
     </div>
