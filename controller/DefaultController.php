@@ -13,14 +13,14 @@ class DefaultController extends Controller
   /**
    * show regs to create
    */
-  public function create()
+  public function showall()
   {
     return $this->view('form');
   }
   /**
    * show regs to edit
    */
-  public function edit($value)
+  public function show($value)
   {
     $id = (int) $value['id'];
     $reg = DefaultModel::find($id);
@@ -30,20 +30,20 @@ class DefaultController extends Controller
   /**
    * insert
    */
-  public function update()
+  public function create()
   {
     $reg = new DefaultModel;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    if ($reg->create()) {
+    if ($reg->showall()) {
       return $this->read();
     }
   }
   /**
    * update regs to edit
    */
-  public function refresh($value)
+  public function update($value)
   {
     $id = (int) $value['id'];
     $reg = DefaultModel::find($id);

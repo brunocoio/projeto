@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="?controller=DefaultController&<?= isset($reg->id) ? "method=refresh&id={$reg->id}" : "method=update"; ?>" method="post">
+  <form action="?controller=DefaultController&<?= isset($reg->id) ? "method=update&id={$reg->id}" : "method=create"; ?>" method="post">
     <div class="form-group">
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="name">Nome:</label>

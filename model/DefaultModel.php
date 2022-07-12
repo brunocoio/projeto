@@ -33,7 +33,7 @@ class DefaultModel
   /**
    * insert reg
    */
-  public function create()
+  public function showall()
   {
     $columns = $this->validate($this->attributes);
     if (!isset($this->id)) {

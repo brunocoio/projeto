@@ -7,7 +7,7 @@
           <th scope='col'>Nome</th>
           <th scope='col'>Email</th>
           <th scope='col'>Password</th>
-          <th scope='col'><a href="?controller=DefaultController&method=create" class='btn btn-outline-info mx-2'><i class='fas fa-plus-circle'></i></a></th>
+          <th scope='col'><a href="?controller=DefaultController&method=showall" class='btn btn-outline-info mx-2'><i class='fas fa-plus-circle'></i></a></th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
               <td><?= $reg->password; ?></td>
               <td><?= $reg->email; ?></td>
               <td>
-                <a href='?controller=DefaultController&method=edit&id=<?= $reg->id; ?>' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>
+                <a href='?controller=DefaultController&method=show&id=<?= $reg->id; ?>' class='btn btn-outline-warning mx-2'><i class='fas fa-pencil-alt'></i></a>
                 <a href='?controller=DefaultController&method=delete&id=<?= $reg->id; ?>' class='btn btn-outline-danger mx-2'><i class='fas fa-trash'></i></a>
               </td>
             </tr>
