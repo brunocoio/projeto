@@ -36,9 +36,12 @@ class DefaultController extends Controller
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
+
     if ($reg->showall()) {
+      print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
+    print json_encode("Erro ao salvar o registro!");
   }
   /**
    * update regs to edit
@@ -50,9 +53,12 @@ class DefaultController extends Controller
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-    $reg->save();
 
-    return $this->read();
+    if ($reg->save()) {
+      print json_encode("Registro salvo com sucesso!");
+      return $this->read();
+    }
+    print json_encode("Erro ao salvar o registro!");
   }
   /**
    * delete regs by id
@@ -60,7 +66,11 @@ class DefaultController extends Controller
   public function delete($value)
   {
     $id = (int) $value['id'];
-    $reg = DefaultModel::destroy($id);
-    return $this->read();
+
+    if ($reg = DefaultModel::destroy($id)) {
+      print json_encode("Registro removido com sucesso!");
+      return $this->read();
+    }
+    print json_encode("Erro ao removido o registro!");
   }
 }
